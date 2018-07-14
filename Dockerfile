@@ -16,6 +16,8 @@ WORKDIR /home/docker
 # Make download directory
 RUN mkdir -p /home/docker/download
 
+RUN apt-get install -qy git
+
 # download fsqio git repository to the download directory
 RUN git clone https://github.com/foursquare/fsqio.git /home/docker/download
 
