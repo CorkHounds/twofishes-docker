@@ -22,12 +22,14 @@ RUN add-apt-repository ppa:openjdk-r/ppa
 RUN apt-get update
 RUN apt-get install -qy openjdk-8-jdk
 
-# install the latest python 2.7, python-dev, curl and wget
+# install the latest python 2.7 to avoid 
+# SNIMissingWarning, InsecurePlatformWarning, etc. 
 RUN add-apt-repository ppa:jonathonf/python-2.7
 RUN apt-get update
 RUN apt-get install -qy git python2.7 python-dev curl wget
 
-# correctly link the cacerts
+# correctly link the cacerts to avoid 
+# '...trustAnchors parameter must be non-empty...' errors
 RUN bash -l -c "/var/lib/dpkg/info/ca-certificates-java.postinst configure"
 
 # download fsqio git repository to the download directory
