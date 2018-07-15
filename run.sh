@@ -1,4 +1,5 @@
-sysctl -q -w vm.max_map_count=131072
+#!/bin/bash
+
 set -e
 if [ ! -e "$FSQIO_BUILD/pants.ini" ]; then
 	sourceDir="/home/docker/download"
